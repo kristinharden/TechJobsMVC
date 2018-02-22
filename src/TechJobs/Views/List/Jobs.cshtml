@@ -2,6 +2,35 @@
 
 <h3>@ViewBag.jobs.Count Result(s)</h3>
 
-@{ 
-    // TODO #3 - Use the same list display from Views/Search/Index.cshtml 
+@{
+    // TODO #3 - Use the same list display from Views/Search/Index.cshtml
+}
+
+
+@if (ViewBag.jobs != null)
+{
+    int number = 1;
+
+    @foreach (Dictionary<string, string> jobsDict in ViewBag.jobs)
+    {
+
+        int increment = number++;
+        <h3>Result @increment :</h3>
+
+        {
+            <div>
+                <table class="job-listing">
+                    @foreach (KeyValuePair<string, string> job in jobsDict)
+
+                    {
+                        <tr>
+                            <td>@job.Key</td>
+                            <td>@job.Value</td>
+                        </tr>
+
+                    }
+                </table>
+            </div>
+        }
+    }
 }
