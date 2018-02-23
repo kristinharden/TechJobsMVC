@@ -47,13 +47,22 @@
                 <table class="job-listing">
                     @foreach (KeyValuePair<string, string> job in jobsDict)
 
-                    {
-                        <tr>
-                            <td>@job.Key.ToUpper()</td>
-                            <td>@job.Value</td>
-                        </tr>
-
-                    }
+                     {
+                        if (job.Key == "name")
+                        {
+                            <tr>
+                                <td>@job.Key.ToUpper()</td>
+                                <td>@job.Value</td>
+                            </tr>
+                        }
+                        else
+                        {
+                            <tr>
+                                <td>@job.Key.ToUpper()</td>
+                                <td><a asp-controller="List" asp-action="Jobs" asp-route-column="@job.Key" asp-route-value="@job.Value">@job.Value</a></td>
+                            </tr>
+                        }
+                     }
                 </table>
             </div>
         }
